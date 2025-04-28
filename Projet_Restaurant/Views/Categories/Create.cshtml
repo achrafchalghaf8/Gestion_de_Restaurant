@@ -1,0 +1,73 @@
+﻿@model Projet_Restaurant.Model.Category
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Créer une Nouvelle Catégorie</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Formulaire de Création</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert" style="display: none;">
+                    <strong>Erreur :</strong> Veuillez vérifier vos informations.
+                </div>
+
+                <!-- Champ pour le nom de la catégorie -->
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Nom de la catégorie</label>
+                    <input asp-for="Name" class="form-control" placeholder="Saisissez le nom de la catégorie" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Boutons -->
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Retour à la liste
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-check-circle"></i> Créer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Styles additionnels pour personnalisation -->
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .card-header {
+        font-weight: bold;
+    }
+
+    input.form-control {
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+    }
+
+    input.form-control:focus {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+</style>
+
+<!-- Inclure Bootstrap et les icônes si ce n'est pas déjà fait -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/jquery.validate.unobtrusive.min.js"></script>

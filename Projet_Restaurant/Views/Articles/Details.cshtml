@@ -1,0 +1,131 @@
+﻿@model Projet_Restaurant.DTO.ArticleDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center mt-4 mb-4">Détails de l'Article</h1>
+
+<div class="container">
+    <!-- Détails de l'article -->
+    <h4>Article : @Html.DisplayFor(model => model.Name)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+    </dl>
+
+    <!-- Boutons Actions -->
+    <div class="d-flex justify-content-end">
+        <!-- Bouton Edit -->
+        <a href="@Url.Action("Edit", "Articles", new { id = Model.ArticleID })" class="btn btn-warning btn-sm me-2">
+            <i class="bi bi-pencil-square"></i> Editer
+        </a>
+
+        <!-- Bouton Delete -->
+        <a href="@Url.Action("Delete", "Articles", new { id = Model.ArticleID })" class="btn btn-danger btn-sm"
+           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
+            <i class="bi bi-trash"></i> Supprimer
+        </a>
+    </div>
+
+    <!-- Retour à la liste -->
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary btn-sm">
+            <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+        </a>
+    </div>
+</div>
+
+<!-- Inclure Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Style personnalisé -->
+<style>
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+
+    .btn {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn-warning {
+        font-size: 16px;
+    }
+
+    .btn-danger {
+        font-size: 16px;
+    }
+
+    .bi {
+        margin-right: 8px;
+    }
+
+    .d-flex {
+        margin-bottom: 20px;
+    }
+
+    .me-2 {
+        margin-right: 10px;
+    }
+
+    .btn-secondary {
+        font-size: 16px;
+    }
+
+    /* Bordure pour les détails */
+    dl {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin-bottom: 10px;
+    }
+</style>

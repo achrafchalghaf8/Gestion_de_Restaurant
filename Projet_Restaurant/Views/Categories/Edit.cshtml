@@ -1,0 +1,36 @@
+﻿@model Projet_Restaurant.DTO.CategoryDTO
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<h1>Edit Category</h1>
+
+<h4>Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <!-- Formulaire pour modifier la catégorie -->
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Champ caché pour l'ID -->
+            <input type="hidden" asp-for="CategoryId" />
+
+            <!-- Champ pour le nom de la catégorie -->
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Boutons -->
+            <div class="form-group mt-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

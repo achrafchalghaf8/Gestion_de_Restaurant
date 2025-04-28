@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Projet_Restaurant.DTO.CategoryDTO>
+
+<h1 class="text-center mt-4 mb-4">Liste des catégories</h1>
+
+<div class="container">
+    <!-- Bouton Créer -->
+    <div class="d-flex justify-content-end mb-4">
+        <a href="@Url.Action("Create", "Categories")" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Créer une catégorie
+        </a>
+    </div>
+
+    <!-- Table des catégories -->
+    <table class="table table-bordered table-striped table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col" colspan="3" class="text-center">Actions</th> <!-- Ajustement des colonnes pour les actions -->
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@category.Name</td>
+
+                        <td class="text-center">
+                            <!-- Bouton Edit -->
+                            <a href="@Url.Action("Edit", "Categories", new { id = category.CategoryId })" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-square"></i> Editer
+                            </a>
+                        </td>
+
+                        <td class="text-center">
+                            <!-- Bouton Delete -->
+                            <a href="@Url.Action("Delete", "Categories", new { id = category.CategoryId })" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?');">
+                                <i class="bi bi-trash"></i> Supprimer
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted">Aucune catégorie disponible.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Style personnalisé -->
+<style>
+    /* Centrer l'en-tête */
+    h1 {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #007bff;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    /* Ajuster les bordures */
+    th, td {
+        border: 1px solid #ddd;
+    }
+
+    /* Message si aucune catégorie */
+    .text-muted {
+        font-style: italic;
+    }
+
+    /* Bouton Créer personnalisé */
+    .btn-primary {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    /* Pour les icônes dans les boutons */
+    .bi {
+        margin-right: 8px;
+    }
+</style>
+
+<!-- Inclure Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">

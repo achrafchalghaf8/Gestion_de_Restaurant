@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Projet_Restaurant.Model.Order>
+
+@{
+    ViewData["Title"] = "Liste des Commandes";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date de Commande</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.OrderDate</td>
+                <td>@order.TotalPrice</td>
+                <td>
+                    <a href="@Url.Action("Details", "Orders", new { id = order.OrderId })" class="btn btn-info">Voir</a>
+                    <a href="@Url.Action("Edit", "Orders", new { id = order.OrderId })" class="btn btn-warning">Editer</a>
+                    <a href="@Url.Action("Delete", "Orders", new { id = order.OrderId })" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

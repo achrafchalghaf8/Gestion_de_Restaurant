@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Projet_Restaurant.DTO.ArticleDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center mt-4 mb-4">Liste des Articles</h1>
+
+<div class="container">
+    <!-- Bouton Créer -->
+    <div class="d-flex justify-content-end mb-4">
+        <a href="@Url.Action("Create", "Articles")" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Créer un article
+        </a>
+    </div>
+
+    <!-- Table des articles -->
+    <table class="table table-bordered table-striped table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.ImageUrl)</th>
+                <th>@Html.DisplayNameFor(model => model.CategoryName)</th> <!-- Affiche le nom de la catégorie -->
+                <th class="text-center">Actions</th> <!-- Colonne pour les actions -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ImageUrl)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+
+                    <td class="text-center">
+                        <!-- Bouton Edit -->
+                        <a href="@Url.Action("Edit", "Articles", new { id = item.ArticleID })" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> Editer
+                        </a>
+
+                        <!-- Bouton Delete -->
+                        <a href="@Url.Action("Delete", "Articles", new { id = item.ArticleID })" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
+                            <i class="bi bi-trash"></i> Supprimer
+                        </a>
+
+                        <a href="@Url.Action("details", "Articles", new { id = item.ArticleID })" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> details
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Style personnalisé -->
+<style>
+    /* Centrer l'en-tête */
+    h1 {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #007bff;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    /* Ajuster les bordures */
+    th, td {
+        border: 1px solid #ddd;
+    }
+
+    /* Message si aucune catégorie */
+    .text-muted {
+        font-style: italic;
+    }
+
+    /* Boutons stylisés */
+    .btn-warning {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn-danger {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    /* Pour les icônes dans les boutons */
+    .bi {
+        margin-right: 8px;
+    }
+
+    /* Bouton Créer */
+    .btn-primary {
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>
+
+<!-- Inclure Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
